@@ -5,28 +5,9 @@ import { Item } from '../interfaces/item';
   providedIn: 'root',
 })
 export class ListaDeTarefasService {
-  private listaDeTarefas: Item[] = [
-    {
-      id: 1,
-      nome: 'Estudar',
-      data: 'Segunda-feira às 19:00',
-      concluida: false,
-    },
-    {
-      id: 2,
-      nome: 'Academia',
-      data: 'Terça-feira 20:00',
-      concluida: true,
-    },
-    {
-      id: 3,
-      nome: 'Faculdade',
-      data: 'Quinta-feira às 21:00',
-      concluida: false,
-    },
-  ];
+  private listaDeTarefas: Item[] = [];
   constructor() {
-    console.log('Instanciando dependências necessárias para o serviço.');
+    this.listaDeTarefas = JSON.parse(localStorage.getItem('itens') || '[]');
   }
 
   getListaDeItem() {
@@ -58,5 +39,9 @@ export class ListaDeTarefasService {
     };
     const id = itemAntigo.id;
     this.listaDeTarefas.splice(Number(id) - 1, 1, itemEditado);
+  }
+
+  atualizarLocalStorage() {
+    localStorage.setItem('itens', JSON.stringify(this.listaDeTarefas));
   }
 }

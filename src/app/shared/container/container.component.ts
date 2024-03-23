@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { Item } from 'src/app/interfaces/item';
 import { ListaDeTarefasService } from 'src/app/service/lista.service';
 
@@ -7,7 +7,7 @@ import { ListaDeTarefasService } from 'src/app/service/lista.service';
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.scss'],
 })
-export class ContainerComponent implements OnInit {
+export class ContainerComponent implements OnInit, DoCheck {
   listaDeTarefas!: Array<Item>;
   itemParaSerEditado!: Item;
 
@@ -15,7 +15,11 @@ export class ContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.listaDeTarefas = this.listaDeTarefasService.getListaDeItem();
-    console.log(this.listaDeTarefas);
+    // console.log(this.listaDeTarefas);
+  }
+
+  ngDoCheck(): void {
+    this.listaDeTarefasService.atualizarLocalStorage();
   }
 
   editarItem(item: Item) {
