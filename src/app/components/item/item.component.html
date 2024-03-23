@@ -1,7 +1,8 @@
-<input class="checkbox" type="checkbox" name="comprado" id="comprado">
-<p class="description">Nome do item</p>
-<div class="d-contents">
-  <mat-icon class="icon">pen</mat-icon>
+<input class="checkbox" type="checkbox" name="comprado" id="comprado" [checked]="item.concluida">
+
+<p class="description">{{ item.nome }}</p>
+<div class="d-contents" *ngIf="!item.concluida">
   <mat-icon class="delete-icon">delete</mat-icon>
+  <mat-icon class="edit-icon" (click)="editarItem()">edit</mat-icon>
 </div>
-<small class="date">00/10/2000</small>
+<small class="date">{{ item.data }}</small>

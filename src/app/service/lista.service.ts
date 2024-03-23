@@ -1,35 +1,62 @@
 import { Injectable } from '@angular/core';
-import { Item } from 'src/app/interfaces/item';
+import { Item } from '../interfaces/item';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ListaService {
+export class ListaDeTarefasService {
   private listaDeTarefas: Item[] = [
     {
       id: 1,
-      nome: 'Queijo prato',
-      data: 'Segunda-feira (31/10/2022) às 08:30',
-      comprado: false,
+      nome: 'Estudar',
+      data: 'Segunda-feira às 19:00',
+      concluida: false,
     },
     {
       id: 2,
-      nome: 'Leite integral',
-      data: 'Segunda-feira (31/10/2022) às 08:30',
-      comprado: false,
+      nome: 'Academia',
+      data: 'Terça-feira 20:00',
+      concluida: true,
     },
     {
       id: 3,
-      nome: 'Mamão papaia',
-      data: 'Segunda-feira (31/10/2022) às 08:30',
-      comprado: true,
+      nome: 'Faculdade',
+      data: 'Quinta-feira às 21:00',
+      concluida: false,
     },
   ];
   constructor() {
     console.log('Instanciando dependências necessárias para o serviço.');
   }
 
-  getListaDeCompra() {
+  getListaDeItem() {
     return this.listaDeTarefas;
+  }
+
+  criarItem(nomeDoItem: string) {
+    const id = this.listaDeTarefas.length + 1;
+    const item: Item = {
+      id: id,
+      nome: nomeDoItem,
+      data: new Date().toLocaleDateString('pt-BR'),
+      concluida: false,
+    };
+    return item;
+  }
+
+  adicionarItemNaLista(nomeDoItem: string) {
+    const item = this.criarItem(nomeDoItem);
+    this.listaDeTarefas.push(item);
+  }
+
+  editarItemDaLista(itemAntigo: Item, nomeEditadoDoItem: string) {
+    const itemEditado: Item = {
+      id: itemAntigo.id,
+      nome: nomeEditadoDoItem,
+      data: itemAntigo.data,
+      concluida: itemAntigo.concluida,
+    };
+    const id = itemAntigo.id;
+    this.listaDeTarefas.splice(Number(id) - 1, 1, itemEditado);
   }
 }
