@@ -1,8 +1,17 @@
 <input class="checkbox" type="checkbox" name="comprado" id="comprado" [checked]="item.concluida">
 
-<p class="description">{{ item.nome }}</p>
-<div class="d-contents" *ngIf="!item.concluida">
+<p class="description" id="itemNome">{{ item.nome }}</p>
+<div class="d-contents" id="itemConcluida" *ngIf="!item.concluida">
   <mat-icon class="delete-icon" (click)="deletarItem()">delete</mat-icon>
   <mat-icon class="edit-icon" (click)="editarItem()">edit</mat-icon>
 </div>
 <small class="date">{{ item.data }}</small>
+
+<script type="text/javascript">
+  const chkbx = document.getElementsByName("comprado")[0];
+  chkbx.addEventListener("change", function () {
+    if (chkbx.checked) {
+      document.getElementById("itemNome").style.color = "#000000";
+    }
+  });
+</script>

@@ -18,9 +18,9 @@ export class ContainerComponent implements OnInit {
     // console.log(this.listaDeTarefas);
   }
 
-  /* ngDoCheck(): void {
+  ngDoCheck(): void {
     this.listaDeTarefasService.atualizarLocalStorage();
-  } */
+  }
 
   editarItem(item: Item) {
     this.itemParaSerEditado = item;
@@ -34,7 +34,7 @@ export class ContainerComponent implements OnInit {
   }
 
   limparLista() {
-    this.listaDeTarefasService.limparLocalStorage();
+    // this.listaDeTarefasService.limparLocalStorage();
     this.listaDeTarefas = [];
   }
 }

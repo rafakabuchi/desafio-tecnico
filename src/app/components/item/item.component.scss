@@ -18,6 +18,11 @@ small {
   grid-area: checkbox;
 }
 
+#comprado:checked + #itemNome {
+  color: #7b1fa2;
+  font-weight: bold;
+}
+
 .description {
   justify-self: start;
   align-self: center;
@@ -49,3 +54,9 @@ small {
 .line-through {
   text-decoration: line-through;
 }
+
+#termsText {
+  color: #000000; /* Preto */
+}
+
+
