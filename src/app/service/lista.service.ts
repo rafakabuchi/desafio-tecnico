@@ -6,6 +6,7 @@ import { Item } from '../interfaces/item';
 })
 export class ListaDeTarefasService {
   private listaDeTarefas: Item[] = [];
+
   constructor() {
     this.listaDeTarefas = JSON.parse(localStorage.getItem('itens') || '[]');
   }
@@ -19,7 +20,7 @@ export class ListaDeTarefasService {
     const item: Item = {
       id: id,
       nome: nomeDoItem,
-      data: new Date().toLocaleDateString('pt-BR'),
+      data: new Date().toLocaleString('pt-BR'),
       concluida: false,
     };
     return item;
@@ -43,5 +44,9 @@ export class ListaDeTarefasService {
 
   atualizarLocalStorage() {
     localStorage.setItem('itens', JSON.stringify(this.listaDeTarefas));
+  }
+
+  limparLocalStorage() {
+    localStorage.removeItem('itens');
   }
 }

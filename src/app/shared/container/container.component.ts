@@ -7,7 +7,7 @@ import { ListaDeTarefasService } from 'src/app/service/lista.service';
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.scss'],
 })
-export class ContainerComponent implements OnInit, DoCheck {
+export class ContainerComponent implements OnInit {
   listaDeTarefas!: Array<Item>;
   itemParaSerEditado!: Item;
 
@@ -18,11 +18,23 @@ export class ContainerComponent implements OnInit, DoCheck {
     // console.log(this.listaDeTarefas);
   }
 
-  ngDoCheck(): void {
+  /* ngDoCheck(): void {
     this.listaDeTarefasService.atualizarLocalStorage();
-  }
+  } */
 
   editarItem(item: Item) {
     this.itemParaSerEditado = item;
+  }
+
+  deletarItem(id: number) {
+    const index = this.listaDeTarefas.findIndex((item) => {
+      item.id === id;
+    });
+    this.listaDeTarefas.splice(index, 1);
+  }
+
+  limparLista() {
+    this.listaDeTarefasService.limparLocalStorage();
+    this.listaDeTarefas = [];
   }
 }

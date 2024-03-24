@@ -29,9 +29,7 @@
 }
 
 .lista h4 {
-  border-bottom: 1px solid rgb(247, 0, 255);
   padding-bottom: 1rem;
-  border-style: none none dashed none;
   font-family: 'Mansalva', sans-serif;
   color: #b945e3;
 }
@@ -81,4 +79,17 @@ small {
 }
 .line-through {
   text-decoration: line-through;
+}
+
+.header-lista {
+  align-items: center;
+  border-bottom: 1px solid blue;
+  border-style: none none dashed none;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: .5rem;
+}
+
+.btn-header {
+  padding: 1px 9px;
 }
