@@ -4,11 +4,12 @@
   grid-template-rows: 1fr 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
+  background-color: #FEF7FF;
   grid-template-areas:
     "checkbox description delete-icon edit-icon"
     "date date date date";
-  padding: .5rem 0;
 }
+
 
 small {
   font-size: .5rem;
@@ -16,6 +17,7 @@ small {
 
 .checkbox {
   grid-area: checkbox;
+  margin: 10px 10px;
 }
 
 #comprado:checked + #itemNome {
@@ -26,7 +28,8 @@ small {
 .description {
   justify-self: start;
   align-self: center;
-  grid-area: description;
+  margin-left: 1em;
+  margin-top: 1em;
 }
 
 .d-contents {
@@ -50,13 +53,6 @@ small {
   grid-area: date;
   margin-top: .5rem;
   margin-left: .5rem;
-}
-.line-through {
-  text-decoration: line-through;
-}
-
-#termsText {
-  color: #000000; /* Preto */
 }
 
 
